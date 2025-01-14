@@ -1,0 +1,9 @@
+services:
+  co2:
+    build: .
+    env_file:
+      - private.env
+    devices:
+      - /dev/hidraw0
+    environment:
+      - HIDRAW_DEVICE=/dev/hidraw0
