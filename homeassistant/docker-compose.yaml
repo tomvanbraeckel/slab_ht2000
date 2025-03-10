@@ -1,6 +1,7 @@
 services:
   co2:
-    build: .
+    build: ..
+    restart: always
     env_file:
       - private.env
     devices:

@@ -12,9 +12,9 @@ WORKDIR /app
 
 COPY --from=build /app/ht2000 /app/ht2000
 
-ADD requirements.txt /app/requirements.txt
+ADD homeassistant/requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt
 
-ADD ha.py /app/ha.py
+ADD homeassistant/ha.py /app/ha.py
 
 CMD ["python", "/app/ha.py"]

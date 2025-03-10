@@ -78,6 +78,7 @@ if __name__ == "__main__":
     print(f"Starting Home Assistant client for device {HA_DEVICE_NAME} on {HA_HOST}")
 
     while True:
+        error = False
         try:
             temperature, humidity, co2 = read_values(binary, HIDRAW_DEVICE)
             ha.set_all(temperature, humidity, co2)
@@ -85,8 +86,15 @@ if __name__ == "__main__":
 
         except requests.exceptions.RequestException as e:
             print(f"Error connecting to Home Assistant: {e}")
+            error = True
         except Exception as e:
             print(f"Error reading sensor values: {e}")
+            error = True
     
         sys.stdout.flush()
-        time.sleep(1)
+        if error:
+            # HT2000 starts misbehaving if it is pinged too often during
+            # startup.
+            time.sleep(60)
+        else:
+            time.sleep(1)

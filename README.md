@@ -8,3 +8,5 @@ Full blogpost about reverse engineering this thing: http://globalblindspot.blogs
 
 Author: Tom Van Braeckel <tomvanbraeckel@gmail.com>
 
+There is a Home Assitant integration in [homeassitant/]
+
